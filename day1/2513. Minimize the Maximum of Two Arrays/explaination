@@ -1,0 +1,13 @@
+
+we are going to use binary search
+
+x --> is the count of numbers from low to mid which are not divisible by d1
+y --> is the count of numbers from low to mid which are not divisible by d2
+z-> is the count of number which is not divisible by d1 and d2 , since when we subtract 
+
+z = mid - (mid/d1)-(mid/d2)-; it'll substracts the number two times , so by doind this we subtract the same number by 2 times
+ instead of that 
+ z=mid-(mid/lcm);
+
+ 
+
