@@ -1,0 +1,42 @@
+class Solution{
+    static String printMinNumberForPattern(String S){
+        // code here
+        int inx = 0;
+        int nextInx = 1;
+        String result ="";
+        while(inx < S.length())
+        {
+            char ch = S.charAt(inx);
+            if(ch == 'I' && inx == 0)
+            {
+                result += nextInx;
+                ++nextInx;
+            }
+            
+            int consecutiveDcounter = 0;
+            int dInx = inx + 1;
+            if(ch == 'D')
+            {
+             consecutiveDcounter=1;
+                
+            }
+            while(dInx < S.length() && S.charAt(dInx) == 'D')
+            {
+                ++consecutiveDcounter;
+                ++dInx;
+            }
+            int currentConsecutiveDcounter = consecutiveDcounter;
+            while(consecutiveDcounter >= 0)
+            {
+               result += nextInx + consecutiveDcounter;
+               --consecutiveDcounter;
+            }
+            nextInx+=currentConsecutiveDcounter+1;
+         
+           inx = dInx;
+        }
+        
+        
+        return result;
+    }
+}
