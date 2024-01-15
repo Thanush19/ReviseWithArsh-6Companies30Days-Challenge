@@ -1,0 +1,20 @@
+class Solution {
+        // for any index within range[start, end], it can be reached from index-1 || index + 1
+    // -> 2D dp problem, TC = O(3000k) = O(k), SC = O(3000k) = O(k)
+    public int numberOfWays(int startPos, int endPos, int k) {
+        int mod = 1000000007;
+        // dp[idx][k] represents the number of different ways to reach (idx - 1000) with k steps left
+        int[][] dp = new int[3002][k + 1];
+        // initialization
+        dp[startPos+1000][k] = 1;
+        // dp for different remaining steps
+        for(int j = k - 1; j >= 0; j--){
+            // iterate different idx
+            for(int idx = 1; idx <= 3000; idx++){
+                // reach from previous idx or next idx
+                dp[idx][j] = ((dp[idx][j] + dp[idx - 1][j + 1]) % mod + dp[idx + 1][j + 1]) % mod;
+            }
+        }
+        return dp[endPos + 1000][0];
+    }
+}
